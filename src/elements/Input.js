@@ -1,14 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
+import { Text, Grid } from "./index";
+
 const Input = (props) => {
 
-
+  const { label, placeholder, _onChange, type, multiLine } = props;
 
   return (
     <React.Fragment>
       
-      <Inputbox>ddd</Inputbox>
+      <Inputbox type={type} placeholder={placeholder} onChange={_onChange}>ddd</Inputbox>
       
     </React.Fragment>
   );
