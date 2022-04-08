@@ -1,12 +1,30 @@
 import React from "react";
+import "./Modal.css"
 
-const Modal = () => {
-
+const Modal = (props) => {
+  
+  const { open, close, header } = props;
   return (
-    <div>
-      dddd
+    <div className={open ? 'openModal modal' : 'modal'}>
+      {open 
+      ? (
+          <section>
+            <header>
+              {header}
+              <button className="close" onClick={close}>
+                &times;
+              </button>
+            </header>
+            <main>{props.children}</main>
+            <footer>
+              <button className="close" onClick={() => {console.log("ddddd")}}>
+                등록하기
+              </button>
+            </footer>
+          </section>
+        ) 
+      : null }
     </div>
-    
   );
 };
 
