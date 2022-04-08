@@ -4,10 +4,12 @@ const star = () => {
 
   return (
     <div>
-      ddd
+      
     </div>
     
   );
 };
+
+
 
 export default star;
