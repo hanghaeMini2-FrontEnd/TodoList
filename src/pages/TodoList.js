@@ -12,8 +12,8 @@ const TodoList = (props) => {
   const [투두, 투두변경] = useState([
     {
       planId : 1,
-      title : "카드 완성",
-      text : "오늘 끝내자 오늘 끝내자 오늘 끝내자",
+      title : "맥주맥주맥주맥주맥주맥주맥주",
+      text : "오늘 끝내자 오늘 끝내자",
       rank : "어려움",
     },
     {

@@ -37,13 +37,15 @@ const Singup = (props) => {
               placeholder="비밀번호를 다시 입력하세요."  
             ></Input>
           </Grid>
-          <Grid margin="10px 0px 0px 0px" padding="0px 16px">
-            <Button bg = "#755139" text="회원가입하기" color = "#F2EDD7" bold = "900"/>
-          </Grid>
-          <Grid margin="0px 0px 20px 0px" padding="16px">
-            <Button bg = "#755139" color = "#F2EDD7" bold = "900" text="뒤로가기" onClick={() => {
-              history.goBack();
-            }}/>
+          <Grid margin="20px 0px 0px 0px">
+            <Grid margin="10px 0px 0px 0px" padding="0px 16px">
+              <Button bg = "#755139" text="회원가입하기" color = "#F2EDD7" bold = "900"/>
+            </Grid>
+            <Grid margin="0px 0px 20px 0px" padding="16px">
+              <Button bg = "#755139" color = "#F2EDD7" bold = "900" text="홈으로 가기" onClick={() => {
+                history.push('/');
+              }}/>
+            </Grid>
           </Grid>
         </DivSt>
       </Grid>
