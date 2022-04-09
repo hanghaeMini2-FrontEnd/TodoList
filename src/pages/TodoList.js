@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Card from "../components/Card";
 import Modal from "../components/Modal";
+import Header from "../components/Header";
 import { Grid , Text, Input, Button} from "../elements/Index"
 import { useState } from "react";
 
@@ -39,16 +40,23 @@ const TodoList = (props) => {
 
   return (
     <React.Fragment>
-      <Button width = "80px" text = "로그아웃" bg = "#02343F" color = "#F0EDCC"></Button>
-      <AddBtn onClick={openModal}>앙</AddBtn>
+
+      <Header></Header>
+
+      <AddBtn onClick={openModal}>Todo!</AddBtn>
+
+      <Grid margin = "100px 0px 0px 0px"></Grid>
+      
       <Card 투두={투두}></Card>
 
       {/* header 부분에 텍스트를 입력한다. */}
       <Modal open={modalOpen} close={closeModal} header="Todo List">
         {/* // Modal.js  */}
         <main>
-        <Input placeholder = "제목을 입력해주세요!" style={{width : "100px", margin : "5px auto"}}></Input>
-        <Input placeholder = "Todo 내용을 알려주세요!" style={{width : "100px", margin : "5px auto"}}></Input>
+          <Grid>
+            <Input margin = "10px auto" border = "none" placeholder = "제목을 입력해주세요!"></Input>
+            <Input margin = "10px auto" border = "none" height = "200px" placeholder = "Todo 내용을 알려주세요!"></Input>
+          </Grid>
         </main>
         {/* 에 내용이 입력된다. 리액트 함수형 모달 */}
         {/* 팝업창입니다. 쉽게 만들 수 있어요. 같이 만들어봐요! */}
@@ -60,18 +68,19 @@ const TodoList = (props) => {
 };
 
 let AddBtn = styled.div`
-  width : 50px;
-  height : 50px;
+  width : 60px;
+  height : 60px;
   border-radius : 50%;
   position : fixed;
-  bottom : 10px;
-  right : 10px;
-  background-color : black;
+  bottom : 20px;
+  right : 20px;
+  background-color : #02343f;
   align-items: center;
   justify-content: center;
   display: flex;
-  color : white;
-  font-size : 30px;
+  color : #f0edcc;
+  font-size : 17px;
+  font-weight: 900
 `
 
 export default TodoList;

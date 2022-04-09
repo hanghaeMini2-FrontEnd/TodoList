@@ -18,15 +18,16 @@
   max-width: 450px;
   margin: 0 auto;
   border-radius: 0.3rem;
-  background-color: #fff;
+  background-color: #f0edcc;
   animation: modal-show 0.3s;
   overflow: hidden;
 }
 .modal > section > header {
   position: relative;
   padding: 16px 64px 16px 16px;
-  background-color: #f1f1f1;
+  background-color: #02343f;
   font-weight: 700;
+  color: #f0edcc;
 }
 .modal > section > header button {
   position: absolute;
@@ -36,7 +37,7 @@
   font-size: 21px;
   font-weight: 700;
   text-align: center;
-  color: #999;
+  color: #f0edcc;
   background-color: transparent;
 }
 .modal > section > main {
@@ -46,14 +47,17 @@
 }
 .modal > section > footer {
   padding: 12px 16px;
-  text-align: right;
+  text-align: center;
 }
 .modal > section > footer button {
+  width: 120px;
+  height: 40px;
   padding: 6px 12px;
-  color: #fff;
-  background-color: #6c757d;
+  color: #f0edcc;
+  background-color: #02343f;
   border-radius: 5px;
   font-size: 13px;
+  font-weight: 900;
 }
 .modal.openModal {
   display: flex;

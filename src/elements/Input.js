@@ -4,7 +4,16 @@ import styled from "styled-components";
 import { Grid , Text} from "../elements/Index"
 
 const Input = (props) => {
-  const { label, placeholder, _onChange, type, multiLine } = props;
+  // 인풋 컴포넌트는 props로 아래의 것들을 받아온다.
+  const { label, placeholder, _onChange, type, multiLine, border, height, margin, width, bg } = props;
+
+  const styles = {
+    width: width,
+    border: border,
+    height: height,
+    margin : margin,
+    bg : bg,
+  }
   
   if(multiLine){
     return (
@@ -23,7 +32,7 @@ const Input = (props) => {
     <React.Fragment>
       <Grid>
         {label && <Text margin="0px">{label}</Text>}
-        <ElInput type={type} placeholder={placeholder} onChange={_onChange} />
+        <ElInput {...styles} type={type} placeholder={placeholder} onChange={_onChange} />
       </Grid>
     </React.Fragment>
   );
@@ -34,6 +43,10 @@ Input.defaultProps = {
   label: false,
   placeholder: "텍스트를 입력해주세요.",
   type: "text",
+  border : "1px solid #212121",
+  height : false,
+  width : "100%",
+  margin : false,
   _onChange: () => {},
 };
 
@@ -42,6 +55,7 @@ const ElTextarea = styled.textarea`
   width: 100%;
   padding: 12px 4px;
   box-sizing: border-box;
+  bg: white,
 `;
 
 
@@ -50,6 +64,10 @@ const ElInput = styled.input`
   width: 100%;
   padding: 12px 4px;
   box-sizing: border-box;
+  background-color: ${(props) => props.bg};
+  border : ${(props) => props.border};
+  height : ${(props) => props.height};
+  margin : ${(props) => props.margin};
 `;
 
 export default Input;
