@@ -14,7 +14,7 @@ const Card = (props) => {
       { props.투두.map ( (data, idx) => { 
         return(
               
-          <Grid margin = "20px auto" width = "50vw" key = {idx}>
+          <Grid margin = "20px auto" width = "50vw" min = "485px" key = {idx}>
 
 
             <TodoCard>

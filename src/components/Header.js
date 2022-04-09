@@ -6,6 +6,8 @@ const Header = (props) => {
 
   return (
     <React.Fragment>
+      <Grid width = "100vw" min = "345px">
+
       <HeaderSt>
         <div>
           <Text
@@ -26,6 +28,7 @@ const Header = (props) => {
           />
         </div>
       </HeaderSt>
+      </Grid>
     </React.Fragment>
   );
 };

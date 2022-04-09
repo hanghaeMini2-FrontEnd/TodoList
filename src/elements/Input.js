@@ -44,7 +44,7 @@ Input.defaultProps = {
   placeholder: "텍스트를 입력해주세요.",
   type: "text",
   border : "1px solid #212121",
-  height : false,
+  height : "100%",
   width : "100%",
   margin : false,
   _onChange: () => {},
