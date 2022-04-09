@@ -16,7 +16,6 @@ const Star = () => {
                     key={idx}
                     onClick={() => {
                     setRate(idx + 1);
-                    console.log(idx)
                     }}
                     style={{
                     width: "30px",
@@ -26,7 +25,7 @@ const Star = () => {
                     float : 'left',
                     textAlign : 'center',
                     clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
-                    backgroundColor: rate < idx + 1 ? "darkgray" : "#02343f",
+                    backgroundColor: rate < idx + 1 ? "darkgray" : "#f9844a",
                     }}
                 >
                 

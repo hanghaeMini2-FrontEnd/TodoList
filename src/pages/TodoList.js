@@ -76,11 +76,11 @@ let AddBtn = styled.div`
   position : fixed;
   bottom : 20px;
   right : 20px;
-  background-color : #02343f;
+  background-color : #755139;
   align-items: center;
   justify-content: center;
   display: flex;
-  color : #f0edcc;
+  color : #F2EDD7;
   font-size : 17px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   font-weight: 900

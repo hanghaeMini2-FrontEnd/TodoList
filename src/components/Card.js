@@ -77,13 +77,14 @@ const Card = (props) => {
 let TodoCard = styled.div`
   height : 120px;
   border-radius : 10px;
-  background-color : #F0EDCC;
+  background-color : #F2EDD7;
   box-shadow : rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding : 10px;
 `
 
 let TodoImogi = styled.svg`
   float : right;
+  fill : #755139;
 `
 
 export default Card;
