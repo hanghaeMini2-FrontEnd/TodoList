@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Card from "../components/Card";
 import Modal from "../components/Modal";
 import Header from "../components/Header";
+import Star from "../elements/star";
 import { Grid , Text, Input, Button} from "../elements/Index"
 import { useState } from "react";
 
@@ -54,8 +55,9 @@ const TodoList = (props) => {
         {/* // Modal.js  */}
         <main>
           <Grid>
-            <Input margin = "10px auto" border = "none" placeholder = "제목을 입력해주세요!"></Input>
-            <Input margin = "10px auto" border = "none" height = "200px" placeholder = "Todo 내용을 알려주세요!"></Input>
+            <Input margin = "10px auto" bg = "#f7f6eb" border = "none" placeholder = "제목을 입력해주세요!"></Input>
+            <Input margin = "10px auto" bg = "#f7f6eb" border = "none" height = "200px" placeholder = "Todo 내용을 알려주세요!"></Input>
+            <Star></Star>
           </Grid>
         </main>
         {/* 에 내용이 입력된다. 리액트 함수형 모달 */}
@@ -80,8 +82,11 @@ let AddBtn = styled.div`
   display: flex;
   color : #f0edcc;
   font-size : 17px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   font-weight: 900
 `
+
+
 
 export default TodoList;
 
