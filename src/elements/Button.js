@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Button = (props) => {
 
   // 버튼 컴포넌트는 props로 아래의 것들을 받아온다.
-  const { text, onClick, width, bg, color, padding, margin } = props;
+  const { text, onClick, width, bg, color, padding, margin, bold, radius } = props;
 
   // props로 받아온 것 중 style에 적용되는 부분을 묶어준다.
   const styles = {
@@ -14,6 +14,8 @@ const Button = (props) => {
     bg: bg,
     color: color,
     margin : margin,
+    bold : bold,
+    radius : radius,
   }
 
   return (
@@ -32,6 +34,8 @@ Button.defaultProps = {
   color: "white",
   bg: "black",
   margin : false,
+  bold : false,
+  radius : false,
   onClick: () => {}
 }
 
@@ -42,8 +46,10 @@ const ButtonSt = styled.button`
   margin: ${(props) => props.margin};
   padding: ${(props) => props.padding};
   background-color: ${(props) => props.bg};
+  font-weight: ${(props) => props.bold};
   box-sizing: border-box;
   border: none;
+  border-radius : ${(props) => props.radius};
 `
 
 export default Button

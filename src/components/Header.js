@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Grid, Text, Button } from "../elements/Index";
 
@@ -15,17 +16,17 @@ const Header = (props) => {
             >Hello, 000님</Text>
         </div>
         <div>
+          <Link to="/">
           <Button
-            bg="#02343F"
-            width="60px"
-            text="로그인"
+            bg="#755139"
+            width="80px"
+            text="로그아웃"
+            bold="900"
+            radius = "3px"
+            color = "#F2EDD7"
             // margin넣기
           />
-          <Button
-            bg="#02343F"
-            width="70px"
-            text="회원가입"
-          />
+          </Link>
         </div>
       </HeaderSt>
       </Grid>
@@ -49,6 +50,7 @@ const HeaderSt = styled.div`
   div {
     padding-right: 20px;
     padding-left: 20px;
+    bold : 900;
   }
 
 `
