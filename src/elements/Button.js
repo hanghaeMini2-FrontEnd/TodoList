@@ -35,7 +35,7 @@ Button.defaultProps = {
   bg: "black",
   margin : false,
   bold : false,
-  radius : false,
+  radius : "0px",
   onClick: () => {}
 }
 

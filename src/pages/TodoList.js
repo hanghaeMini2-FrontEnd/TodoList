@@ -46,7 +46,7 @@ const TodoList = (props) => {
 
       <AddBtn onClick={openModal}>Todo!</AddBtn>
 
-      <Grid margin = "100px 0px 0px 0px"></Grid>
+      <Grid margin = "180px 0px 0px 0px"></Grid>
       
       <Card 투두={투두}></Card>
 
@@ -61,7 +61,7 @@ const TodoList = (props) => {
           </Grid>
         </main>
         {/* 에 내용이 입력된다. 리액트 함수형 모달 */}
-        {/* 팝업창입니다. 쉽게 만들 수 있어요. 같이 만들어봐요! */}
+        {/* 팝업창입니다.*/}
       </Modal>
 
     </React.Fragment>

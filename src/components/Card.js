@@ -1,11 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import { Grid , Text, Input, Button} from "../elements/Index"
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import {useDispatch, useSelector} from "react-redux"
+import axios from "axios";
+
+import { loadTodo } from "../redux/modules/todo";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 const Card = (props) => {
 
 
+  // const data = axios.get("http://localhost:4000/posts");
+  // data.then((res) => console.log(res.data));
   
   return (
     
@@ -31,7 +38,16 @@ const Card = (props) => {
               <div style={{width : "20%", height : "30px", float : "left", margin : "5px auto"}}>
 
                 {/* 삭제버튼 */}
-                <TodoImogi viewBox="0 0 24 24" height="2em" width="2em" onClick={() => {console.log("삭제버튼입니다!")}}> 
+                <TodoImogi viewBox="0 0 24 24" height="2em" width="2em" onClick={() => {
+
+                      axios.get('http://localhost:4000/posts')  // 데이터를 요청할 URL
+                      .then((result) => {           // 성공했을떄
+                        console.log(result.data);    // 성공했을떄 하고싶은 동작 입력
+                      })
+                      .catch(() => {                // 실패했을떄
+                        console.log("실패!")         // 실패했을때 하고싶은 동작 입력
+                      })
+                      }}> 
                   <path 
                   d="M17.414 6.586c-.78-.781-2.048-.781-2.828 0l-2.586 2.586-2.586-2.586c-.78-.781-2.048-.781-2.828 0-.781.781-.781 2.047 0 2.828l2.585 2.586-2.585 2.586c-.781.781-.781 2.047 0 2.828.39.391.902.586 1.414.586s1.024-.195 1.414-.586l2.586-2.586 2.586 2.586c.39.391.902.586 1.414.586s1.024-.195 1.414-.586c.781-.781.781-2.047 0-2.828l-2.585-2.586 2.585-2.586c.781-.781.781-2.047 0-2.828z">
                   </path>

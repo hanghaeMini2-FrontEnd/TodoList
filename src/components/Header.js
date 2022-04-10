@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Grid, Text, Button } from "../elements/Index";
+import todo99 from '../shared/cookieman.png'
+import "./Modal.css"
 
 const Header = (props) => {
 
@@ -10,6 +12,9 @@ const Header = (props) => {
       <Grid width = "100vw" min = "345px">
 
       <HeaderSt>
+        <Grid padding="30px 16px" width = "80px">
+          <img src={todo99} alt="todo99" className="wobble-hor-bottom"/>
+        </Grid>
         <div>
           <Text
             bold size="24px"

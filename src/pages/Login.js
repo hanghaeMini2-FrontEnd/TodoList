@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../components/Header";
 import { Grid, Text, Input, Button } from "../elements/Index"
+import todo99 from '../shared/99todoLogo.png'
 
 
 const Login = (props) => {
@@ -12,8 +13,8 @@ const Login = (props) => {
       <Grid width = "50vw" margin = "auto" min = "350px" bg = "#F2EDD7" radius = "10px">
         <DivSt>
           <Grid width="auto" margin="16px">
-            <Grid padding="0px 16px">
-              <Text bold = "900" size="36px">99_Todo</Text>
+            <Grid padding="30px 16px">
+              <img src={todo99} alt="todo99"/>
             </Grid>
             
             <Grid margin="20px 0px 0px 0px" padding="0px 16px">
@@ -57,7 +58,7 @@ const DivSt = styled.div`
   flex-direction: column;
   width: 90%;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 150px;
   margin-bottom: 50px;
 `
 
