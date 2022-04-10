@@ -1,5 +1,6 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
+import axios from "axios";
 
 // 액션
 
@@ -20,9 +21,39 @@ const logOut = createAction(LOG_OUT, (user) => ({user}));
 const loadToken = createAction(LOAD_TOKEN, (user) => ({user}));
 
 // 미들웨어
-// 로그인 액션
 
-// 로그아웃 액션
+// 로그인 액션
+const loginDB = (userId, userPw) => {
+  return function (dispatch, getState, {history}) {
+    axios
+      .post("DB주소", {
+        userId: userId,
+        userPw: userPw,
+      })
+      .then(response => {
+        console.log(response);
+      })
+  }
+}
+
+// 회원가입 액션
+const signupDB = (userId, userPw) => {
+  return function (dispatch, getState, {history}) {
+    axios
+    .post("DB주소", {
+      userId: userId,
+      userPw: userPw,
+    })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      alert("error 메세지 입력");
+      console.log("회원가입 DB Error", error);
+    })
+  }
+}
+
 // 토큰 받기 액션
 
 // 리듀서
@@ -48,6 +79,8 @@ export default handleActions(
 const actionCreators = {
   logIn,
   logOut,
+  loginDB,
+  signupDB,
 };
 
 export { actionCreators };
