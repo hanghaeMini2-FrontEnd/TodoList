@@ -28,7 +28,7 @@ Grid.defaultProps = {
   margin: false,
   bg: false,
   min : "100px",
-  radius : false,
+  radius : "0px",
 };
 
 const GridSt = styled.div`

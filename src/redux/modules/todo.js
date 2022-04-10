@@ -11,7 +11,26 @@ const DELETE_TODO = "DELETE_TODO";
 // 초기값
 
 const initialState = {
-
+  data : [
+    {
+    planId: 1,
+    title: "맥주맥주맥주맥주맥주맥주맥주기본",
+    text: "오늘 끝내자 오늘 끝내자기본",
+    rank: "어려움기본"
+    },
+    {
+    planId: 2,
+    title: "카드 실패기본",
+    text: "오류 안나게 해주세요기본",
+    rank: "기본..?"
+    },
+    {
+    planId: 3,
+    title: "제발제발제발제발기본",
+    text: "한번만한번만한번만한번만기본",
+    rank: "어려워기본"
+    }
+    ]
 };
 
 // 액션 생성 함수
