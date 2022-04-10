@@ -1,10 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Header from "../components/Header";
-import { Grid, Text, Input, Button } from "../elements/Index"
+import { Link } from "react-router-dom";
+import { Grid, Input, Button } from "../elements/Index"
 import todo99 from '../shared/99todoLogo.png'
-
 
 const Login = (props) => {
 

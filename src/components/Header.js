@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Grid, Text, Button } from "../elements/Index";
-import todo99 from '../shared/cookieman.png'
-import "./Modal.css"
+import { history } from "../redux/configureStore";
+import todo99 from '../shared/cookieman.png';
+import "./Modal.css";
 
 const Header = (props) => {
 
@@ -29,7 +30,10 @@ const Header = (props) => {
             bold="900"
             radius = "3px"
             color = "#F2EDD7"
-            // margin넣기
+            onClick = {() => {
+              window.alert("다음에 또 만나요!");
+              history.push('/');
+            }}
           />
           </Link>
         </div>

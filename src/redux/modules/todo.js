@@ -1,5 +1,6 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
+import axios from "axios";
 
 // 액션
 
@@ -41,12 +42,36 @@ const editTodo = createAction(EDIT_TODO, (post_id, post) => ({post_id, post}));
 const deleteTodo = createAction(DELETE_TODO, (post_id) => ({post_id}));
 
 // 미들웨어
+
 // todo 추가 액션
+const addTodoFB = () => {
+  return function (dispatch, getState, {history}) {
+
+  }
+}
 
 // todo 수정 액션
 
-// todo 삭제 액션
+const editTodoFB = () => {
+  return function (dispatch, getState, {history}) {
 
+  }
+}
+
+
+// todo 삭제 액션
+const deleteTodoFB = () => {
+  return function (dispatch, getState, {history}) {
+
+  }
+}
+
+// todoList 가져오기 액션
+const getTodoFB = () => {
+  return function (dispatch, getState, {history}) {
+
+  }
+}
 
 
 // 리듀서
@@ -79,6 +104,10 @@ const actionCreators = {
   addTodo,
   editTodo,
   deleteTodo,
+  getTodoFB,
+  editTodoFB,
+  addTodoFB,
+  deleteTodoFB,
 };
 
 export { actionCreators };
