@@ -19,10 +19,13 @@ const initialState = {
 
 const logIn = createAction(LOG_IN, (user) => ({user}));
 const logOut = createAction(LOG_OUT, (user) => ({user}));
-const loadToken = createAction(LOAD_TOKEN, (token) => ({token}));
+const loadToken = createAction(LOAD_TOKEN, (boo) => ({boo}));
 
 // 미들웨어
+<<<<<<< HEAD
 
+=======
+>>>>>>> cdb487fca9c286d4975d31c876ceb185e7ca1d5a
 // 토큰로드 액션
 const loadTokenFB = () => {
   return function (dispatch) {
@@ -37,6 +40,7 @@ const loginDB = (userId, userPw) => {
   return function (dispatch, getState, {history}) {
     axios
       .post("http://3.38.179.73/user/login", {
+        
         userId: userId,
         userPw: userPw,
       })
@@ -87,7 +91,7 @@ export default handleActions(
     [LOG_IN]: (state, action) =>
       produce(state, (draft) => {
         setCookie("is_login", "success");
-        draft.token = action.payload.user.token;
+        // draft.token = action.payload.user.token;
         draft.user = action.payload.user;
         draft.is_login = true;
       }),
