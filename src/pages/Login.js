@@ -2,10 +2,22 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Grid, Input, Button } from "../elements/Index";
-import todo99 from '../shared/99todoLogo.png';
+import todo99 from "../shared/99todoLogo.png";
 import { useDispatch } from "react-redux";
+import {getCookie, setCookie, deleteCookie} from "../shared/Cookie"
+import { actionCreators as userActions } from "../redux/modules/user";
 
 const Login = (props) => {
+
+  const dispatch = useDispatch();
+
+  const [id, setId] = React.useState("");
+  const [pwd, setPwd] = React.useState("");
+
+  // 로그인 함수
+  const login = () => {
+    dispatch(userActions.loginDB(id, pwd))
+  }
 
   return (
     <React.Fragment>
@@ -19,23 +31,37 @@ const Login = (props) => {
             <Grid margin="20px 0px 0px 0px" padding="0px 16px">
               <Input
                 type="text"
+                value={id}
                 label="아이디"
-                placeholder="아이디를 입력하세요."  
+                placeholder="아이디를 입력하세요." 
+                _onChange={(e) => {
+                  setId(e.target.value);
+                  // console.log(e.target.value);
+                }} 
               ></Input>
             </Grid>
 
             <Grid padding="16px">
               <Input
                 type="password"
+                value={pwd}
                 label="비밀번호"
-                placeholder="비밀번호를 입력하세요."  
+                placeholder="비밀번호를 입력하세요."
+                _onChange={(e) => {
+                  setPwd(e.target.value);
+                  // console.log(e.target.value);
+                }} 
               ></Input>
             </Grid>
 
             <Grid margin="10px 0px 0px 0px" padding="0px 16px">
-              <Link to="/TodoList">
-                <Button bg = "#755139" text="로그인하기" color = "#F2EDD7" bold = "900"/>   
-              </Link>
+                <Button
+                  bg = "#755139"
+                  text="로그인하기"
+                  color = "#F2EDD7"
+                  bold = "900"
+                  onClick={login}
+                />   
             </Grid>
 
             <Grid margin="0px 0px 20px 0px" padding="16px">
