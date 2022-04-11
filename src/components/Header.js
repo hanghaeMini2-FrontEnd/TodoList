@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
 import { Grid, Text, Button } from "../elements/Index";
+import { actionCreators as userActions } from "../redux/modules/user";
 import { history } from "../redux/configureStore";
 import todo99 from '../shared/cookieman.png';
 import "./Modal.css";
 
 const Header = (props) => {
+  const dispatch = useDispatch()
 
   return (
     <React.Fragment>
@@ -32,6 +35,7 @@ const Header = (props) => {
             color = "#F2EDD7"
             onClick = {() => {
               window.alert("다음에 또 만나요!");
+              dispatch(userActions.logOut());
               history.push('/');
             }}
           />
