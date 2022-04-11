@@ -9,8 +9,8 @@ const ADD_TODO = "ADD_TODO";  // /
 const EDIT_TODO = "EDIT_TODO";
 const DELETE_TODO = "DELETE_TODO";
 
-const SET_TODO_REQ = "todos/SET_TODO_REQ";
-const SET_TODO_SUCCESS = "todos/SET_TODO_SUCCESS";
+// const SET_TODO_REQ = "todos/SET_TODO_REQ";
+// const SET_TODO_SUCCESS = "todos/SET_TODO_SUCCESS";
 
 // 초기값
 
@@ -34,33 +34,33 @@ const addTodo = createAction(ADD_TODO, (post) => ({post}));
 const editTodo = createAction(EDIT_TODO, (post_id, post) => ({post_id, post}));
 const deleteTodo = createAction(DELETE_TODO, (post_id) => ({post_id}));
 
-const setTodogood = () => {
-  return {
-    type: SET_TODO_REQ,
-  };
-};
+// const setTodogood = () => {
+//   return {
+//     type: SET_TODO_REQ,
+//   };
+// };
 
-const setTodoSuccess = (payload) => {
-  return {
-    type: SET_TODO_SUCCESS,
-    payload,
-  };
-};
+// const setTodoSuccess = (payload) => {
+//   return {
+//     type: SET_TODO_SUCCESS,
+//     payload,
+//   };
+// };
 
 // 미들웨어
 
 // todoList 가져오기 액션
-export const loadTodoFB = () => async (dispatch, getState) => {
-  try {
-    dispatch(setTodogood());
-    const {data} = await axios.get("http://localhost:3009/posts");
-    dispatch(setTodoSuccess(data));
-    console.log(data)
-  } catch (error) {
-    alert("돌아가어림없어");
-    dispatch(error);
-  }
-};
+// export const loadTodoFB = () => async (dispatch, getState) => {
+//   try {
+//     dispatch(setTodogood());
+//     const {data} = await axios.get("http://3.38.179.73/api/plan");
+//     dispatch(setTodoSuccess(data));
+//     console.log(data)
+//   } catch (error) {
+//     alert("돌아가어림없어");
+//     dispatch(error);
+//   }
+// };
 
 
 // todo 추가 액션
@@ -132,7 +132,7 @@ const actionCreators = {
   addTodo,
   editTodo,
   deleteTodo,
-  loadTodoFB,
+  // loadTodoFB,
   editTodoFB,
   addTodoFB,
   deleteTodoFB,
