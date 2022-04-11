@@ -10,10 +10,6 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 const Card = (props) => {
 
-
-  // const data = axios.get("http://localhost:4000/posts");
-  // data.then((res) => console.log(res.data));
-
   const dispatch = useDispatch();
   const todo = useSelector(( todo ) => todo.todo.data);
   

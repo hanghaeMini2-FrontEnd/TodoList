@@ -9,8 +9,8 @@ const ADD_TODO = "ADD_TODO";  // /
 const EDIT_TODO = "EDIT_TODO";
 const DELETE_TODO = "DELETE_TODO";
 
-const LOAD_TODOS_REQ = "todos/LOAD_TODOS_REQ";
-const LOAD_TODOS_SUCCESS = "todos/LOAD_TODOS_SUCCESS";
+const SET_TODO_REQ = "todos/SET_TODO_REQ";
+const SET_TODO_SUCCESS = "todos/SET_TODO_SUCCESS";
 
 // 초기값
 
@@ -34,15 +34,15 @@ const addTodo = createAction(ADD_TODO, (post) => ({post}));
 const editTodo = createAction(EDIT_TODO, (post_id, post) => ({post_id, post}));
 const deleteTodo = createAction(DELETE_TODO, (post_id) => ({post_id}));
 
-const loadTodosReq = () => {
+const setTodogood = () => {
   return {
-    type: LOAD_TODOS_REQ,
+    type: SET_TODO_REQ,
   };
 };
 
-const loadTodosSuccess = (payload) => {
+const setTodoSuccess = (payload) => {
   return {
-    type: LOAD_TODOS_SUCCESS,
+    type: SET_TODO_SUCCESS,
     payload,
   };
 };
@@ -52,12 +52,12 @@ const loadTodosSuccess = (payload) => {
 // todoList 가져오기 액션
 export const loadTodoFB = () => async (dispatch, getState) => {
   try {
-    dispatch(loadTodosReq());
-    const { data } = await axios.get("http://localhost:3009/posts");
-    dispatch(loadTodosSuccess(data));
+    dispatch(setTodogood());
+    const {data} = await axios.get("http://localhost:3009/posts");
+    dispatch(setTodoSuccess(data));
     console.log(data)
   } catch (error) {
-    alert("에러가 발생했습니다. 다시 접속해주세요.");
+    alert("돌아가어림없어");
     dispatch(error);
   }
 };
