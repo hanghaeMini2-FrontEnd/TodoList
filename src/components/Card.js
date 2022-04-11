@@ -4,8 +4,8 @@ import { Grid , Text, Input, Button} from "../elements/Index"
 import { useState, useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux"
 import axios from "axios";
-
-import { loadTodo } from "../redux/modules/todo";
+import { actionCreators as postActions } from "../redux/modules/todo";
+import {loadTodoFB } from "../redux/modules/todo";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 const Card = (props) => {
@@ -13,12 +13,21 @@ const Card = (props) => {
 
   // const data = axios.get("http://localhost:4000/posts");
   // data.then((res) => console.log(res.data));
+
+  const dispatch = useDispatch();
+  const todo = useSelector(( todo ) => todo.todo.data);
   
+  useEffect(() => {
+    dispatch(postActions.loadTodoFB());
+  }, [dispatch]);
+  
+  console.log(todo)
+    
   return (
     
     <React.Fragment>
 
-      { props.투두.map ( (data, idx) => { 
+      { todo.map ( (data, idx) => { 
         return(
               
           <Grid margin = "20px auto" width = "50vw" min = "485px" key = {idx}>
@@ -28,11 +37,11 @@ const Card = (props) => {
 
               <div style={{width : "65%", float : "left"}}>
                 <Text size = "20px" bold = "800" margin = "8px" style={{width : "100px", margin : "5px auto"}}>
-                  {props.투두[idx].title}
+                  {todo[idx].title}
                 </Text>
               </div>
 
-              <div style={{width : "15%", height : "30px", float : "left", margin : "5px auto", textAlign : "center", lineHeight : "30px"}}>{props.투두[idx].rank}</div>
+              <div style={{width : "15%", height : "30px", float : "left", margin : "5px auto", textAlign : "center", lineHeight : "30px"}}>{todo[idx].stars}</div>
 
               {/* 이모지 버튼 묶음div */}
               <div style={{width : "20%", height : "30px", float : "left", margin : "5px auto"}}>
@@ -72,7 +81,7 @@ const Card = (props) => {
               <hr style={{width:"96%"}}></hr>
 
               <Text size = "15px" bold = "800" margin = "15px 10px">
-                {props.투두[idx].text}
+                {todo[idx].content}
               </Text>
 
             </TodoCard>
