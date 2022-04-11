@@ -5,9 +5,11 @@ import Modal from "../components/Modal";
 import Header from "../components/Header";
 import Star from "../elements/star";
 import { Grid, Input } from "../elements/Index"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const TodoList = (props) => {
+
+    
 
   const [투두, 투두변경] = useState([
     {
@@ -55,9 +57,10 @@ const TodoList = (props) => {
         {/* // Modal.js  */}
         <main>
           <Grid>
-            <Input margin = "10px auto" bg = "#f7f6eb" border = "none" placeholder = "제목을 입력해주세요!"></Input>
-            <Input margin = "10px auto" bg = "#f7f6eb" border = "none" height = "200px" placeholder = "Todo 내용을 알려주세요!"></Input>
-            <Star></Star>
+
+            
+
+
           </Grid>
         </main>
         {/* 에 내용이 입력된다. 리액트 함수형 모달 */}

@@ -2,21 +2,19 @@
   "posts": [
     {
       "planId" : 1,
-      "title" : "맥주맥주맥주맥주맥주맥주맥주",
-      "text" : "오늘 끝내자 오늘 끝내자",
-      "rank" : "어려움"
+      "title" : "기본값",
+      "content" : "기본값 입니다",
+      "stars" : 3,
+      "createdAt" : "작성일자",
+      "status" : false
     },
     {
       "planId" : 2,
-      "title" : "카드 실패",
-      "text" : "오류 안나게 해주세요",
-      "rank" : "쉽나..?"
-    },
-    {
-      "planId" : 3,
-      "title" : "제발제발제발제발",
-      "text" : "한번만한번만한번만한번만",
-      "rank" : "어려워"
+      "title" : "기본값2",
+      "content" : "기본값2 입니다",
+      "stars" : 1,
+      "createdAt" : "작성일자w",
+      "status" : false
     }
   ]
 }
