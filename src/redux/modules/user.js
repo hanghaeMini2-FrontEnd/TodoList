@@ -23,6 +23,12 @@ const loadToken = createAction(LOAD_TOKEN, (token) => ({token}));
 
 // 미들웨어
 
+// const instance = axios.create({
+//   headers: {
+//     Authrozation: response.headers.authorization.split(" ")[1]
+//   },
+// })
+
 // 토큰로드 액션
 const loadTokenFB = () => {
   return function (dispatch) {
@@ -50,7 +56,13 @@ const loginDB = (userId, userPw) => {
         setCookie("Authorization", response.headers.authorization.split(" ")[1]);
         history.replace("/todoList");
         // window.location.reload();
+        axios.get("http://3.38.179.73/user/login", {
+          headers: {
+              Authorization: `${response.headers.authorization}`
+          }
       })
+      })
+      
       .catch(error => {
         window.alert("아이디 또는 비밀번호를 확인해주세요.")
         console.log("Login Error", error)
