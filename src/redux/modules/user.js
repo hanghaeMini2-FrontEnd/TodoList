@@ -22,6 +22,10 @@ const logOut = createAction(LOG_OUT, (user) => ({user}));
 const loadToken = createAction(LOAD_TOKEN, (boo) => ({boo}));
 
 // 미들웨어
+<<<<<<< HEAD
+
+=======
+>>>>>>> cdb487fca9c286d4975d31c876ceb185e7ca1d5a
 // 토큰로드 액션
 const loadTokenFB = () => {
   return function (dispatch) {
@@ -51,7 +55,6 @@ const loginDB = (userId, userPw) => {
         history.replace("/todoList");
         // window.location.reload();
       })
-      
       .catch(error => {
         window.alert("아이디 또는 비밀번호를 확인해주세요.")
         console.log("Login Error", error)
