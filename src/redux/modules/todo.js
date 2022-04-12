@@ -73,7 +73,7 @@ const todoLoadFB = () => {
   return function(dispatch, getState, {history}) {
     const myToken = getCookie("Authorization",
     )
-    axios.get('http://3.38.179.73/api/plan?sortBy=stars&isAsc=true&size=100&page=1'
+    axios.get('http://3.38.179.73/api/plan?sortBy=stars&isAsc=true&size=10&page=1'
     ,{headers : {"Authorization" : `Bearer ${myToken}`}})
     .then((res) => {
       dispatch(setTodo(res.data));
