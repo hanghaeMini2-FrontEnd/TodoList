@@ -5,11 +5,15 @@ import { useDispatch } from "react-redux";
 import { Grid, Text, Button } from "../elements/Index";
 import { actionCreators as userActions } from "../redux/modules/user";
 import { history } from "../redux/configureStore";
+import { getCookie } from "../shared/Cookie";
 import todo99 from '../shared/cookieman.png';
 import "./Modal.css";
 
 const Header = (props) => {
   const dispatch = useDispatch()
+
+  const username = getCookie("userId");
+  console.log(username);
 
   return (
     <React.Fragment>
@@ -22,7 +26,7 @@ const Header = (props) => {
         <div>
           <Text
             bold size="24px"
-            >Hello, 000님</Text>
+            >Hello, {username}님</Text>
         </div>
         <div>
           <Link to="/">

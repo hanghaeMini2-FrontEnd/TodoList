@@ -48,6 +48,8 @@ const loginDB = (userId, userPw) => {
           })
         );
         setCookie("Authorization", response.headers.authorization.split(" ")[1]);
+        setCookie("userId", userId);
+        setCookie("userPw", userPw);
         history.replace("/todoList");
         // window.location.reload();
       })
@@ -69,10 +71,11 @@ const signupDB = (userId, userPw, pwCheck) => {
     })
     .then(response => {
       console.log(response);
+      window.alert("회원가입을 축하합니다!")
       history.push("/login")
     })
     .catch(error => {
-      alert("error 메세지 입력");
+      alert("중복된 아이디가 존재합니다.");
       console.log("회원가입 DB Error", error);
     })
   };
@@ -94,7 +97,8 @@ export default handleActions(
     [LOG_OUT]: (state, action) =>
       produce(state, (draft) => {
         deleteCookie("Authorization");
-        deleteCookie("is_login");
+        deleteCookie("userId");
+        deleteCookie("userPw");
 				draft.is_login = false;
       }),
     [LOAD_TOKEN]: (state, action) =>
