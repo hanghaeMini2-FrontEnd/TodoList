@@ -22,6 +22,10 @@ const Card = (props) => {
     dispatch(postActions.todoLoadFB());
   }, [dispatch]);
 
+  const 돌려돌려 = todos.content
+
+  console.log(돌려돌려)
+
   // const post = useSelector((state) => state.todo.todos)
 
   // console.log(post)
@@ -38,7 +42,7 @@ const Card = (props) => {
     
     <React.Fragment>
 
-      { props.투두.map ( (data, idx) => { 
+      { 돌려돌려 && 돌려돌려.map ( (data, idx) => { 
         return(
               
           <Grid margin = "20px auto" width = "50vw" min = "485px" key = {idx}>
@@ -53,7 +57,7 @@ const Card = (props) => {
                 margin = "8px" 
                 style={{width : "100px", 
                 margin : "5px auto"}}>
-                  {props.투두[idx].title}
+                  {data.title}
                 </Text>
               </div>
 
@@ -63,7 +67,7 @@ const Card = (props) => {
                 float : "left", 
                 margin : "5px auto", 
                 textAlign : "center", 
-                lineHeight : "30px"}}>{props.투두[idx].stars}</div>
+                lineHeight : "30px"}}>{data.stars}</div>
 
               {/* 이모지 버튼 묶음div */}
               <div style={{
@@ -106,7 +110,7 @@ const Card = (props) => {
               <hr style={{width:"96%"}}></hr>
 
               <Text size = "15px" bold = "800" margin = "15px 10px">
-                {props.투두[idx].content}
+                {data.content}
               </Text>
 
             </TodoCard>
