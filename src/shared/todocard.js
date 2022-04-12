@@ -6,7 +6,6 @@ export function PostAddTodoList(Id, Data) {
     method: "POST",
     url: `/api/plan/${Id}`,
     data: Data,
-    
   });
 }
 export function PutFixTodoList(cardId, Data) {

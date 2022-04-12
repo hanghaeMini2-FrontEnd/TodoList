@@ -1,6 +1,7 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import axios from "axios";
+import { getCookie } from "../../shared/Cookie";
 
 import {
   PostAddTodoList,
@@ -17,17 +18,18 @@ const ADD_TODO = "ADD_TODO";  // /
 const EDIT_TODO = "EDIT_TODO";
 const DELETE_TODO = "DELETE_TODO";
 
-const TODOADD = "TODOADD";
-const CARDADD = "CARDADD";
-
-
-
 // 초기값
 
 const initialState = {
-  cards: [],
+  todos: [],
 };
 
+const initialPost = [{
+  title : "",
+  content : "",
+  stars : 1,
+}]
+  
 // 액션 생성 함수
 
 const setTodo = createAction(SET_TODO, (post_list) => ({post_list}));
@@ -35,27 +37,23 @@ const addTodo = createAction(ADD_TODO, (post) => ({post}));
 const editTodo = createAction(EDIT_TODO, (post_id, post) => ({post_id, post}));
 const deleteTodo = createAction(DELETE_TODO, (post_id) => ({post_id}));
 
-const todo_add = createAction(TODOADD, (pid, todoText) => ({
-  todoText,
-  pid,
-}));
-
-const card_add = createAction(CARDADD, card => ({ card }));
-
-
 
 // todo 추가 액션
-const addTodoFB = (title, content, stars) => {
+const addTodoFB = (title, content, stars, ) => {
   return function (dispatch, getState, {history}) {
+    const myToken = getCookie("Authorization")
+    console.log(myToken)
     axios.post("http://3.38.179.73/api/plan", {
+      ...initialPost,
       title : title,
       content : content,
       stars : stars,
-    })
-    .then(response => {
-      console.log(response);
-      history.push("/TodoList")
-    })
+    },
+    {headers: { 'Authorization' : `Bearer ${myToken}`}}
+    )
+    .then(
+      dispatch(addTodo({title, content, stars}))
+    )
     .catch(error => {
       alert("돌아가")
       console.log("어림없어", error)
@@ -88,7 +86,7 @@ export default handleActions(
   {
     [SET_TODO]: (state, action) =>
       produce(state, (draft) => {
-
+        draft.todos.unshift(action.payload.post);
       }),
     [ADD_TODO]: (state, action) =>
       produce(state, (draft) => {
@@ -103,7 +101,7 @@ export default handleActions(
 
       }),  
   },
-  initialState
+  initialPost
 );
 
 const actionCreators = {
