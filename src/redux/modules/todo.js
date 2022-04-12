@@ -3,43 +3,49 @@ import { produce } from "immer";
 import axios from "axios";
 import { getCookie } from "../../shared/Cookie";
 
-import {
-  PostAddTodoList,
-  PutFixTodoList,
-  DelectTodoList,
-  LoadCardList,
-  AddCardList,
-} from "../../shared/todocard";
+// import {
+//   PostAddTodoList,
+//   PutFixTodoList,
+//   DelectTodoList,
+//   LoadCardList,
+//   AddCardList,
+// } from "../../shared/todocard";
 
 // 액션
 
-const SET_TODO = "SET_TODO";  // //
-const ADD_TODO = "ADD_TODO";  // /
-const EDIT_TODO = "EDIT_TODO";
-const DELETE_TODO = "DELETE_TODO";
+const SET_TODO = "SET_TODO";  // 
+const ADD_TODO = "ADD_TODO";  // 완료
+const EDIT_TODO = "EDIT_TODO";  // 
+const DELETE_TODO = "DELETE_TODO";  // 
 
 // 초기값
 
 const initialState = {
-  todos: [],
+  todos: [
+  //   {
+  //     "id": 2,
+  //     "title": "제목123",
+  //     "content": "내용321321",
+  //     "stars": 5,
+  //     "userId": 1,
+  //     "created_at" : "2022-04-11 15:02:24",
+  //     "modifed_at" : "2022-04-11 15:02:24"
+  // }
+  ],
 };
 
-const initialPost = [{
-  title : "",
-  content : "",
-  stars : 1,
-}]
+const initialPost = []
   
 // 액션 생성 함수
 
-const setTodo = createAction(SET_TODO, (post_list) => ({post_list}));
-const addTodo = createAction(ADD_TODO, (post) => ({post}));
+const setTodo = createAction(SET_TODO, (post) => ({post}));
+const addTodo = createAction(ADD_TODO, (post_list) => ({post_list}));
 const editTodo = createAction(EDIT_TODO, (post_id, post) => ({post_id, post}));
 const deleteTodo = createAction(DELETE_TODO, (post_id) => ({post_id}));
 
 
 // todo 추가 액션
-const addTodoFB = (title, content, stars, ) => {
+const addTodoFB = (title, content, stars ) => {
   return function (dispatch, getState, {history}) {
     const myToken = getCookie("Authorization")
     console.log(myToken)
@@ -61,6 +67,29 @@ const addTodoFB = (title, content, stars, ) => {
   }
 }
 
+// todo 로드 액션
+
+const todoLoadFB = () => {
+  return function(dispatch, getState, {history}) {
+    const myToken = getCookie("Authorization",
+    )
+    axios.get('http://3.38.179.73/api/plan?sortBy=stars&isAsc=true&size=100&page=1'
+    ,{headers : {"Authorization" : `Bearer ${myToken}`}})
+    .then((res) => {
+      dispatch(setTodo(res.data));
+    })
+    .catch((err)=> {
+      console.log(err);
+    })
+  }
+}
+
+// todo 삭제 액션
+const deleteTodoFB = () => {
+  return function (dispatch, getState, {history}) {
+
+  }
+}
 
 // todo 수정 액션
 
@@ -71,12 +100,6 @@ const editTodoFB = () => {
 }
 
 
-// todo 삭제 액션
-const deleteTodoFB = () => {
-  return function (dispatch, getState, {history}) {
-
-  }
-}
 
 
 
@@ -85,13 +108,15 @@ const deleteTodoFB = () => {
 export default handleActions(
   {
     [SET_TODO]: (state, action) =>
-      produce(state, (draft) => {
-        draft.todos.unshift(action.payload.post);
-      }),
-    [ADD_TODO]: (state, action) =>
-      produce(state, (draft) => {
+    produce(state, (draft) => {
+      draft.todos = action.payload.post;
+    }),
 
-      }),
+
+    [ADD_TODO]: (state, action) =>
+    produce(state, (draft) => {
+      // draft.todos.unshift(action.payload.post_list);
+    }),
     [EDIT_TODO]: (state, action) =>
       produce(state, (draft) => {
 
@@ -101,7 +126,7 @@ export default handleActions(
 
       }),  
   },
-  initialPost
+  initialState
 );
 
 const actionCreators = {
@@ -113,6 +138,7 @@ const actionCreators = {
   editTodoFB,
   addTodoFB,
   deleteTodoFB,
+  todoLoadFB,
 };
 
 export { actionCreators };

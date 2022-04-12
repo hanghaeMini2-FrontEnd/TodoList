@@ -1,11 +1,7 @@
 import React from "react";
 import "./Modal.css"
-import { useState } from "react";
-
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 import Input from "../elements/Input";
-import Star from "../elements/star";
 import { useDispatch } from "react-redux";
 import { actionCreators as todoActions } from "../redux/modules/todo";
 
