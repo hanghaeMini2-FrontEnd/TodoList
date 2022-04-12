@@ -12,16 +12,20 @@ const LOAD_TOKEN = "LOAD_TOKEN";
 // 초기값
 
 const initialState = {
+  userInfo: {
+    userId: "",
+    userPw: "",
+  },
     is_login: false,
   };
 
 // 액션 생성 함수
-
 const logIn = createAction(LOG_IN, (user) => ({user}));
 const logOut = createAction(LOG_OUT, (user) => ({user}));
-const loadToken = createAction(LOAD_TOKEN, (boo) => ({boo}));
+const loadToken = createAction(LOAD_TOKEN, (token) => ({token}));
 
 // 미들웨어
+
 // 토큰로드 액션
 const loadTokenFB = () => {
   return function (dispatch) {
@@ -36,12 +40,12 @@ const loginDB = (userId, userPw) => {
   return function (dispatch, getState, {history}) {
     axios
       .post("http://3.38.179.73/user/login", {
-        
         userId: userId,
         userPw: userPw,
       })
       .then(response => {
         console.log(response);
+        console.log(response.config.data.split(":"))
         dispatch(
           logIn({
             is_login: true,
@@ -49,9 +53,8 @@ const loginDB = (userId, userPw) => {
         );
         setCookie("Authorization", response.headers.authorization.split(" ")[1]);
         setCookie("userId", userId);
-        setCookie("userPw", userPw);
+        // setCookie("userId", response.config.data.split(":")[1].split(",")[0]);
         history.replace("/todoList");
-        // window.location.reload();
       })
       .catch(error => {
         window.alert("아이디 또는 비밀번호를 확인해주세요.")
@@ -81,16 +84,13 @@ const signupDB = (userId, userPw, pwCheck) => {
   };
 };
 
-// 토큰 받기 액션
-
 // 리듀서
-
 export default handleActions(
   {
     [LOG_IN]: (state, action) =>
       produce(state, (draft) => {
         setCookie("is_login", "success");
-        // draft.token = action.payload.user.token;
+        draft.token = action.payload.user.token;
         draft.user = action.payload.user;
         draft.is_login = true;
       }),
@@ -98,7 +98,7 @@ export default handleActions(
       produce(state, (draft) => {
         deleteCookie("Authorization");
         deleteCookie("userId");
-        deleteCookie("userPw");
+        deleteCookie("is_login");
 				draft.is_login = false;
       }),
     [LOAD_TOKEN]: (state, action) =>
