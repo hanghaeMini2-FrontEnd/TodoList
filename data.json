@@ -1,20 +1,14 @@
 {
   "posts": [
     {
-      "planId" : 1,
       "title" : "기본값",
       "content" : "기본값 입니다",
-      "stars" : 3,
-      "createdAt" : "작성일자",
-      "status" : false
+      "stars" : 3
     },
     {
-      "planId" : 2,
       "title" : "기본값2",
       "content" : "기본값2 입니다",
-      "stars" : 1,
-      "createdAt" : "작성일자w",
-      "status" : false
+      "stars" : 1
     }
   ]
 }
