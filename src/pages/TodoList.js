@@ -3,9 +3,11 @@ import styled from "styled-components";
 import Card from "../components/Card";
 import Modal from "../components/Modal";
 import Header from "../components/Header";
-import Star from "../elements/star";
 import { Grid, Input } from "../elements/Index"
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import {useDispatch, useSelector} from "react-redux"
+import {todoLoadFB} from "../redux/modules/todo";
 
 const TodoList = (props) => {
 
@@ -15,20 +17,20 @@ const TodoList = (props) => {
     {
       planId : 1,
       title : "맥주맥주맥주맥주맥주맥주맥주",
-      text : "오늘 끝내자 오늘 끝내자",
-      rank : "어려움",
+      content : "오늘 끝내자 오늘 끝내자",
+      stars : "어려움",
     },
     {
       planId : 2,
       title : "카드 실패",
-      text : "오류 안나게 해주세요",
-      rank : "쉽나..?",
+      content : "오류 안나게 해주세요",
+      stars : "쉽나..?",
     },
     {
       planId : 3,
       title : "제발제발제발제발",
-      text : "한번만한번만한번만한번만",
-      rank : "어려워",
+      content : "한번만한번만한번만한번만",
+      stars : "어려워",
     }
   ])
 
@@ -40,6 +42,22 @@ const TodoList = (props) => {
   const closeModal = () => {
     setModalOpen(false);
   };
+
+  // const dispatch = useDispatch();
+
+  // const params = useParams();
+
+  // const a = params.id
+  
+  // console.log(a)
+
+  // const todos = useSelector(state => state.todo.todos);
+
+  // console.log(todos)
+  
+  // useEffect(() => {
+  //   dispatch(todoLoadFB);
+  // }, [dispatch]);
 
   return (
     <React.Fragment>
