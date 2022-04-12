@@ -1,10 +1,12 @@
 import instance from "./instance";
 
 export function PostAddTodoList(Id, Data) {
+  console.log(Id)
   return instance({
     method: "POST",
-    url: `/api/${Id}/detail/todolist`,
+    url: `/api/plan/${Id}`,
     data: Data,
+    
   });
 }
 export function PutFixTodoList(cardId, Data) {
@@ -23,7 +25,7 @@ export function DelectTodoList(cardId, textId) {
 export function LoadCardList() {
   return instance({
     method: "GET",
-    url: `/api/cards/`,
+    url: `/api/plan/`,
   });
 }
 
