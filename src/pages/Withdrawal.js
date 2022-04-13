@@ -2,28 +2,34 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Grid, Input, Button } from "../elements/Index";
-import login99 from "../shared/login.png";
+import Withdrawal from "../shared/withdrawal.png";
 import { useDispatch } from "react-redux";
-import {getCookie, setCookie, deleteCookie} from "../shared/Cookie"
 import { actionCreators as userActions } from "../redux/modules/user";
+import WithdrawalModal from "../components/WithdrawalModal"
+import { getCookie, deleteCookie } from "../shared/Cookie";
 
 const Login = (props) => {
 
-  const dispatch = useDispatch();
-
   const [id, setId] = React.useState("");
   const [pwd, setPwd] = React.useState("");
-
-  console.log(id)
+  const [modalOpen, setModalOpen] = React.useState(false);
 
   // 로그인 함수
-  const login = () => {
+  const withdrawal = () => {
     if(id === "" || pwd === "") {
       window.alert("아이디와 비밀번호를 모두 입력해주세요!");
       return;
     }
-    dispatch(userActions.loginDB(id, pwd))
+    openModal()
   }
+
+  // 모달 열고 닫기
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   return (
     <React.Fragment>
@@ -31,10 +37,11 @@ const Login = (props) => {
         <DivSt>
           <Grid width="auto" margin="16px">
             <Grid padding="10px 16px">
-              <img src={login99} alt="login99"/>
+              <img src={Withdrawal} alt="Withdrawal"/>
+              <p style={{color: "red"}}>회원탈퇴를 위해 아이디와 비밀번호를 정확히 입력해주세요.</p>
             </Grid>
-            
-            <Grid margin="20px 0px 0px 0px" padding="0px 16px">
+
+            <Grid margin="10px 0px 0px 0px" padding="0px 16px">
               <Input
                 type="text"
                 value={id}
@@ -43,7 +50,7 @@ const Login = (props) => {
                 _onChange={(e) => {
                   setId(e.target.value);
                   // console.log(e.target.value);
-                }} 
+                }}
               ></Input>
             </Grid>
 
@@ -56,35 +63,42 @@ const Login = (props) => {
                 _onChange={(e) => {
                   setPwd(e.target.value);
                   // console.log(e.target.value);
-                }} 
+                }}
               ></Input>
             </Grid>
 
             <Grid margin="20px 0px 0px 0px" padding="0px 16px">
                 <Button
                   bg = "#755139"
-                  text="로그인하기"
+                  text="회원탈퇴하기"
                   color = "#F2EDD7"
                   bold = "900"
-                  onClick={login}
+                  onClick={withdrawal}
                 />   
             </Grid>
 
-            <Grid margin="0px 0px 20px 0px" padding="16px">
-              <Link to="/Signup">
-                <Button bg = "#755139" text="회원가입하기" color = "#F2EDD7" bold = "900"/>   
-              </Link>
-            </Grid>
-
-            <Grid margin="0px 0px 30px 0px" padding="0px 16px">
-              <Link to="/Withdrawal">
-                <span>더이상 실현하고자하는 목표가 없으신가요?...</span>
+            <Grid margin="0px 0px 30px 0px" padding="16px">
+              <Link to="/login">
+                <Button bg = "#755139" text="돌아가기" color = "#F2EDD7" bold = "900"/>   
               </Link>
             </Grid>
             
           </Grid>
         </DivSt>
       </Grid>
+
+      <WithdrawalModal id={id} pwd={pwd} open={modalOpen} close={closeModal} header="회원탈퇴">
+        {/* // Modal.js  */}
+        <main>
+          <Grid>
+
+            
+
+          </Grid>
+        </main>
+        {/* 에 내용이 입력된다. 리액트 함수형 모달 */}
+        {/* 팝업창입니다.*/}
+      </WithdrawalModal>
     </React.Fragment>
     
   );

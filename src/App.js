@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import Singup from './pages/Signup';
 import TodoList from './pages/TodoList';
 import Main from './pages/Main';
+import Withdrawal from './pages/Withdrawal'
 
 
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" exact component={Main} />
         <Route path="/login" exact component={Login} />
         <Route path="/signup" exact component={Singup} />
+        <Route path="/withdrawal" exact component={Withdrawal} />
         <Route path="/todoList" exact component={TodoList} />
       </ConnectedRouter>
     </React.Fragment>
