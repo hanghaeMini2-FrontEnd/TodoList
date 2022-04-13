@@ -4,6 +4,7 @@ import { Grid , Text} from "../elements/Index"
 import {useDispatch, useSelector} from "react-redux"
 import { actionCreators as postActions } from "../redux/modules/todo";
 import { useEffect } from "react";
+import { deleteTodoFB } from "../redux/modules/todo";
 
 
 
@@ -14,9 +15,11 @@ const Card = (props) => {
 
   const dispatch = useDispatch();
 
+  // const id = props.match.params.id;
+
   const todos = useSelector(state => state.todo.todos);
 
-  console.log(todos)
+  // console.log(todos)
   
   useEffect(() => {
     dispatch(postActions.todoLoadFB());
@@ -24,7 +27,12 @@ const Card = (props) => {
 
   const 돌려돌려 = todos.content
 
-  console.log(돌려돌려)
+  // console.log(돌려돌려)
+
+  // const deleteTodo = () => {
+  //   window.alert("삭제가 완료되었습니다!");
+  //   dispatch(postActions.deleteTodoFB());
+  // };
 
   // const post = useSelector((state) => state.todo.todos)
 
@@ -36,6 +44,10 @@ const Card = (props) => {
   //         dispatch(postActions.todoLoadFB());
   //     }
   // }, []);
+
+  // const _post = getState().post.list; 
+  // console.log(_post); 
+  // const post_index = _post.findIndex((p) => { return parseInt(p.postId) === parseInt(postId); });
   
     
   return (
@@ -77,7 +89,15 @@ const Card = (props) => {
                 margin : "5px auto"}}>
 
                 {/* 삭제버튼 */}
-                <TodoImogi viewBox="0 0 24 24" height="2em" width="2em"> 
+                <TodoImogi 
+                viewBox="0 0 24 24" 
+                height="2em" 
+                width="2em"
+                onClick={() => {
+                  dispatch(deleteTodoFB(data.planId))
+                  // window.location.reload()
+                }}
+                > 
                   <path 
                   d="M17.414 6.586c-.78-.781-2.048-.781-2.828 0l-2.586 2.586-2.586-2.586c-.78-.781-2.048-.781-2.828 0-.781.781-.781 2.047 0 2.828l2.585 2.586-2.585 2.586c-.781.781-.781 2.047 0 2.828.39.391.902.586 1.414.586s1.024-.195 1.414-.586l2.586-2.586 2.586 2.586c.39.391.902.586 1.414.586s1.024-.195 1.414-.586c.781-.781.781-2.047 0-2.828l-2.585-2.586 2.585-2.586c.781-.781.781-2.047 0-2.828z">
                   </path>
@@ -88,7 +108,7 @@ const Card = (props) => {
                 viewBox="0 0 24 24" 
                 height="1.8em" 
                 width="1.8em" 
-                onClick={() => {console.log("수정버튼입니다!")}}>
+                onClick={() => {}}>
                   <path 
                   d="M21.561 5.318l-2.879-2.879c-.293-.293-.677-.439-1.061-.439-.385 0-.768.146-1.061.439l-3.56 3.561h-9c-.552 0-1 .447-1 1v13c0 .553.448 1 1 1h13c.552 0 1-.447 1-1v-9l3.561-3.561c.293-.293.439-.677.439-1.061s-.146-.767-.439-1.06zm-10.061 9.354l-2.172-2.172 6.293-6.293 2.172 2.172-6.293 6.293zm-2.561-1.339l1.756 1.728-1.695-.061-.061-1.667zm7.061 5.667h-11v-11h6l-3.18 3.18c-.293.293-.478.812-.629 1.289-.16.5-.191 1.056-.191 1.47v3.061h3.061c.414 0 1.108-.1 1.571-.29.464-.19.896-.347 1.188-.64l3.18-3.07v6zm2.5-11.328l-2.172-2.172 1.293-1.293 2.171 2.172-1.292 1.293z">
                   </path>

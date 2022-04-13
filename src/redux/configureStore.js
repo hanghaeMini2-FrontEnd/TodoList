@@ -36,9 +36,7 @@ const composeEnhancers =
     : compose;
 
 // 미들웨어 묶기    
-const enhancer = composeEnhancers(
-  applyMiddleware(...middlewares)
-);
+const enhancer = composeEnhancers(applyMiddleware(...middlewares));
 
 // 스토어 만들기
 let store = (initialStore) => createStore(rootReducer, enhancer);
