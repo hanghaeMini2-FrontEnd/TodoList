@@ -15,6 +15,7 @@ const Modal = (props) => {
 
   const todoAdd = () => {
     dispatch(todoActions.addTodoFB(title, content, stars));
+    close()
   }
 
   // const history = useHistory();
