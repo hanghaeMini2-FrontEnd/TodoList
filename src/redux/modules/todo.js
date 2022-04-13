@@ -3,20 +3,12 @@ import { produce } from "immer";
 import axios from "axios";
 import { getCookie } from "../../shared/Cookie";
 
-// import {
-//   PostAddTodoList,
-//   PutFixTodoList,
-//   DelectTodoList,
-//   LoadCardList,
-//   AddCardList,
-// } from "../../shared/todocard";
-
 // 액션
 
 const SET_TODO = "SET_TODO";  // 완료
 const ADD_TODO = "ADD_TODO";  // 완료
 const EDIT_TODO = "EDIT_TODO";  // 
-const DELETE_TODO = "DELETE_TODO";  // 
+const DELETE_TODO = "DELETE_TODO";  // 완료
 
 // 초기값
 
@@ -45,7 +37,7 @@ const initialPost = [{
 const setTodo = createAction(SET_TODO, (post) => ({post}));
 const addTodo = createAction(ADD_TODO, (post_list) => ({post_list}));
 const deleteTodo = createAction(DELETE_TODO, (planId) => ({ planId }));
-const editTodo = createAction(EDIT_TODO, (planId, post) => ({planId, post}));
+const editTodo = createAction(EDIT_TODO, (planId, post_list) => ({planId, post_list}));
 
 
 // todo 추가 액션
@@ -76,7 +68,7 @@ const todoLoadFB = () => {
   return function(dispatch, getState, {history}) {
     const myToken = getCookie("Authorization",
     )
-    axios.get('http://3.38.179.73/api/plan?sortBy=stars&isAsc=true&size=100&page=1'
+    axios.get('http://3.38.179.73/api/plan?sortBy=stars&isAsc=false&size=100&page=1'
     ,{headers : {"Authorization" : `Bearer ${myToken}`}})
     .then((res) => {
       dispatch(setTodo(res.data));
@@ -88,38 +80,6 @@ const todoLoadFB = () => {
 }
 
 // todo 삭제 액션
-
-// export const deleteTodoFB = (planId) => {
-//   return function (dispatch, getState, {history}) {
-//     if(!planId) {
-//       window.alert("포스트 아이디가 없습니다!")
-//     }
-//     const myToken = getCookie("Authorization");
-//     axios({
-//       method: "delete",
-//       url: `http://3.38.179.73/api/plan/${planId}`,
-//       headers: {
-//         Authorization: `Bearer ${myToken}`
-//       },
-//       data: {
-//         planId: planId,
-//       },
-//     })
-//     .then((response) => {
-//       console.log(response);
-//       const plan_idx = getState().todo.todos.findIndex(
-//         (p) => p.planId === planId
-//       );
-//       const _todo = getState().post.list.filter((item, index) => {
-//           return index !== plan_idx;
-//       });            
-//         dispatch(deleteTodo(_todo));
-//       })
-//     .catch((err) => {
-//       console.log("서버에러: ", err)
-//     })
-//   }
-// }
 
 export const deleteTodoFB = (planId) => {
   return function (dispatch, getState, {history}) {
@@ -147,32 +107,15 @@ export const deleteTodoFB = (planId) => {
   }
 }
 
-// export const deleteTodoFB = (planID) => {
-//   return function (dispatch, getState, { history }) {
-//     const myToken = getCookie("Authorization") //
-//     console.log(myToken) // 
-//       axios.delete(`http://3.38.179.73/api/plan/${planID}`, //
-//       {headers: { 'Authorization' : `Bearer ${myToken}`}}) //
-//       // .postDelete(planID)
-//       .then(function (response) {
-//         console.log(response)
-//         dispatch(deleteTodo(response.data));
-//         history.replace("/postList");
-//       })
-//       .catch(function (err) {
-//         alert("삭제 실패");  //
-//       });
-//   };
-// };
-
 
 // todo 수정 액션
 
-const editTodoFB = () => {
+const editTodoFB = (planId, title, content, stars) => {
+  console.log(planId, title, content, stars )
   return function (dispatch, getState, {history}) {
+    const myToken = getCookie("Authorization");
 
-  }
-}
+}}
 
 
 
@@ -201,7 +144,7 @@ export default handleActions(
 
     [EDIT_TODO]: (state, action) =>
       produce(state, (draft) => {
-
+        
       }),
   },
   initialState
