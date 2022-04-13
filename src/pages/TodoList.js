@@ -11,29 +11,6 @@ import {todoLoadFB} from "../redux/modules/todo";
 
 const TodoList = (props) => {
 
-    
-
-  const [투두, 투두변경] = useState([
-    {
-      planId : 1,
-      title : "맥주맥주맥주맥주맥주맥주맥주",
-      content : "오늘 끝내자 오늘 끝내자",
-      stars : "어려움",
-    },
-    {
-      planId : 2,
-      title : "카드 실패",
-      content : "오류 안나게 해주세요",
-      stars : "쉽나..?",
-    },
-    {
-      planId : 3,
-      title : "제발제발제발제발",
-      content : "한번만한번만한번만한번만",
-      stars : "어려워",
-    }
-  ])
-
   const [modalOpen, setModalOpen] = useState(false);
 
   const openModal = () => {
@@ -42,22 +19,6 @@ const TodoList = (props) => {
   const closeModal = () => {
     setModalOpen(false);
   };
-
-  // const dispatch = useDispatch();
-
-  // const params = useParams();
-
-  // const a = params.id
-  
-  // console.log(a)
-
-  // const todos = useSelector(state => state.todo.todos);
-
-  // console.log(todos)
-  
-  // useEffect(() => {
-  //   dispatch(todoLoadFB);
-  // }, [dispatch]);
 
   return (
     <React.Fragment>
@@ -68,7 +29,7 @@ const TodoList = (props) => {
 
       <Grid margin = "180px 0px 0px 0px"></Grid>
       
-      <Card 투두={투두}></Card>
+      <Card openModal = {openModal}></Card>
 
       {/* header 부분에 텍스트를 입력한다. */}
       <Modal open={modalOpen} close={closeModal} header="Todo List">

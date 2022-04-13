@@ -15,7 +15,7 @@ const Modal = (props) => {
 
   const todoAdd = () => {
     dispatch(todoActions.addTodoFB(title, content, stars));
-    close()
+    window.location.reload()
   }
 
   // const history = useHistory();
@@ -81,6 +81,7 @@ const Modal = (props) => {
             <footer>
               <button className="close" 
                 onClick={todoAdd}
+                
               >
                 등록하기
               </button>
