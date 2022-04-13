@@ -8,6 +8,7 @@ import { setCookie, getCookie, deleteCookie } from "../../shared/Cookie";
 const LOG_IN = "LOG_IN";
 const LOG_OUT = "LOG_OUT";
 const LOAD_TOKEN = "LOAD_TOKEN";
+const WITHDRAWAL = "WITHDRAWAL";
 
 // 초기값
 
@@ -23,8 +24,28 @@ const initialState = {
 const logIn = createAction(LOG_IN, (user) => ({user}));
 const logOut = createAction(LOG_OUT, (user) => ({user}));
 const loadToken = createAction(LOAD_TOKEN, (token) => ({token}));
+const withdrawal = createAction(WITHDRAWAL, (user) => ({user}));
 
 // 미들웨어
+
+// 회원탈퇴 액션
+const withdrawalAC = (userId, userPw) => {
+  return function (dispatch, getState, {history}) {
+    axios
+      .post("http://3.38.179.73/user/remove", {
+        userId: userId,
+        userPw: userPw,
+      })
+      .then(response => {
+        window.alert(response.data);
+        history.replace('/')
+      })
+      .catch(error => {
+        window.alert("아이디와 비밀번호를 정확히 입력해주세요.")
+        console.log("탈퇴 Error", error)
+      })
+  }
+}
 
 // 토큰로드 액션
 const loadTokenFB = () => {
@@ -53,7 +74,6 @@ const loginDB = (userId, userPw) => {
         );
         setCookie("Authorization", response.headers.authorization.split(" ")[1]);
         setCookie("userId", userId);
-        // setCookie("userId", response.config.data.split(":")[1].split(",")[0]);
         history.replace("/todoList");
       })
       .catch(error => {
@@ -105,6 +125,7 @@ export default handleActions(
       produce(state, (draft) => {
         draft.is_login = true;
       }),
+      
   },
   initialState
 );
@@ -112,9 +133,11 @@ export default handleActions(
 const actionCreators = {
   logIn,
   logOut,
+  withdrawal,
   loginDB,
   signupDB,
   loadTokenFB,
+  withdrawalAC,
 };
 
 export { actionCreators };
