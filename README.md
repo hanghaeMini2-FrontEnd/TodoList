@@ -10,16 +10,16 @@
 <div>
   <div>
     <strong>Frontend(React)</strong><br>
-    &nbsp;최지은 : 로그인/회원가입/회원탈퇴 (user)<br>
-    &nbsp;이경태 : TODO_LIST (main)<br>
+    &nbsp;&nbsp;최지은 : 로그인/회원가입/회원탈퇴 (user)<br>
+    &nbsp;&nbsp;이경태 : TODO_LIST (main)<br>
   </div>
   <br>
   <div>
     <strong>Backend(Spring)</strong>
-    <a href="https://github.com/EunheaSong/99List">github로 이동</a>
-    &nbsp;송은혜 : 시큐리티&jwt / 사용자 정보 조회API / 회원 탈퇴API<br>
-    &nbsp;박만수 : TODO 삭제,수정 API / 체크박스 (TODO완료체크) API<br>
-    &nbsp;김호빈 : TODO 전체 조회, 등록 API<br>
+    <a href="https://github.com/EunheaSong/99List">github로 이동</a><br>
+    &nbsp;&nbsp;송은혜 : 시큐리티&jwt / 사용자 정보 조회API / 회원 탈퇴API<br>
+    &nbsp;&nbsp;박만수 : TODO 삭제,수정 API / 체크박스 (TODO완료체크) API<br>
+    &nbsp;&nbsp;김호빈 : TODO 전체 조회, 등록 API<br>
 
   </div>
 </div>
