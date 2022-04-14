@@ -10,25 +10,24 @@
 <div>
   <div>
     <strong>Frontend(React)</strong><br>
-    최지은 : 로그인/회원가입/회원탈퇴 (user)<br>
-    이경태 : TODO_LIST (main)<br>
+    &nbsp;최지은 : 로그인/회원가입/회원탈퇴 (user)<br>
+    &nbsp;이경태 : TODO_LIST (main)<br>
   </div>
   <br>
   <div>
     <strong>Backend(Spring)</strong>
-    송은혜 : 시큐리티&jwt / 사용자 정보 조회API / 회원 탈퇴API<br>
-    박만수 : TO-DO 삭제,수정 API / 체크박스 (TO-DO완료체크) API<br>
-    김호빈 : TO-DO 전체 조회, 등록 API<br>
+    &nbsp;송은혜 : 시큐리티&jwt / 사용자 정보 조회API / 회원 탈퇴API<br>
+    &nbsp;박만수 : TO-DO 삭제,수정 API / 체크박스 (TO-DO완료체크) API<br>
+    &nbsp;김호빈 : TO-DO 전체 조회, 등록 API<br>
     <a href="https://github.com/EunheaSong/99List">github로 이동</a>
   </div>
 </div>
-<br>
 <br>
 <div>
 
 - <a href="http://mytodolist1.s3-website.ap-northeast-2.amazonaws.com/">프로젝트 페이지로 이동</a>
 - <a href="https://youtu.be/a1686CgCQDY">프로젝트 시연영상 보기</a>
-- <a href="https://teamsparta.notion.site/Chapter-4-W6-8be842fb74b84dd1bb8249ed7c52039d">API 명세서</a>
+- <a href="https://www.notion.so/99-A-4-8c535480c3034fdab460445e05542d66">API 명세서</a>
 - 로그인 페이지
 - 회원가입 페이지
 - 회원탈퇴 페이지
