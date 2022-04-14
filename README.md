@@ -1,26 +1,29 @@
 # 주특기 미니 프로젝트
 ## 📚 Todo-List 만들기
-<p>프로젝트 소개</p>
+### 프로젝트 소개
 
 <img src="/src/shared/cookieman.png">
 
-- 해야할 일들을 TODO List로 등록하고 관리할 수 있게하는 간단한 TODO list 서비스. 타 유저와 공유 없이, 로그인한 본인의 목록만 확인하는 프라이빗한 투두리스트입니다!
+해야할 일들을 TODO List로 등록하고 관리할 수 있게하는 간단한 TODO list 서비스. 타 유저와 공유 없이, 로그인한 본인의 목록만 확인하는 프라이빗한 투두리스트입니다!
 
-<p>제작기간 및 팀원소개: 2022.04.08 ~ 2022.04.14(7일간)</p>
+### 제작기간 및 팀원소개: 2022.04.08 ~ 2022.04.14(7일간)
 <div>
-  <div>
-    <p>Frontend(React)</p>
-    <p>최지은 : 로그인/회원가입/회원탈퇴 (user)</p>
-    <p>이경태 : TODO_LIST (main)</p>
-  </div>
-  <div>
-    <p>Backend(Spring)</p>
-    <p>송은혜 : 시큐리티&jwt / 사용자 정보 조회API / 회원 탈퇴API</p>
-    <p>박만수 : TO-DO 삭제,수정 API / 체크박스 (TO-DO완료체크) API</p>
-    <p>김호빈 : TO-DO 전체 조회, 등록 API </p>
+  <table>
+    <strong>Frontend(React)</strong>
+    최지은 : 로그인/회원가입/회원탈퇴 (user)<hr>
+    이경태 : TODO_LIST (main)<hr>
+  </table>
+  <table>
+    <strong>Backend(Spring)</strong>
+    송은혜 : 시큐리티&jwt / 사용자 정보 조회API / 회원 탈퇴API<hr>
+    박만수 : TO-DO 삭제,수정 API / 체크박스 (TO-DO완료체크) API<hr>
+    김호빈 : TO-DO 전체 조회, 등록 API<hr>
     <a href="https://github.com/EunheaSong/99List">github로 이동</a>
-  </div>
+  </table>
 </div>
+<hr>
+<hr>
+<div>
 
 - <a href="http://mytodolist1.s3-website.ap-northeast-2.amazonaws.com/">프로젝트 페이지로 이동</a>
 - <a href="https://youtu.be/a1686CgCQDY">프로젝트 시연영상 보기</a>
@@ -29,6 +32,8 @@
 - 회원가입 페이지
 - 회원탈퇴 페이지
 - 투두리스트 페이지
+
+</div>
 
 ## 사용 stack
 
