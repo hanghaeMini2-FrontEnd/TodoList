@@ -8,21 +8,22 @@
 
 ### 제작기간 및 팀원소개: 2022.04.08 ~ 2022.04.14(7일간)
 <div>
-  <table>
-    <strong>Frontend(React)</strong>
-    최지은 : 로그인/회원가입/회원탈퇴 (user)<hr>
-    이경태 : TODO_LIST (main)<hr>
-  </table>
-  <table>
+  <div>
+    <strong>Frontend(React)</strong><br>
+    최지은 : 로그인/회원가입/회원탈퇴 (user)<br>
+    이경태 : TODO_LIST (main)<br>
+  </div>
+  <br>
+  <div>
     <strong>Backend(Spring)</strong>
-    송은혜 : 시큐리티&jwt / 사용자 정보 조회API / 회원 탈퇴API<hr>
-    박만수 : TO-DO 삭제,수정 API / 체크박스 (TO-DO완료체크) API<hr>
-    김호빈 : TO-DO 전체 조회, 등록 API<hr>
+    송은혜 : 시큐리티&jwt / 사용자 정보 조회API / 회원 탈퇴API<br>
+    박만수 : TO-DO 삭제,수정 API / 체크박스 (TO-DO완료체크) API<br>
+    김호빈 : TO-DO 전체 조회, 등록 API<br>
     <a href="https://github.com/EunheaSong/99List">github로 이동</a>
-  </table>
+  </div>
 </div>
-<hr>
-<hr>
+<br>
+<br>
 <div>
 
 - <a href="http://mytodolist1.s3-website.ap-northeast-2.amazonaws.com/">프로젝트 페이지로 이동</a>
