@@ -16,10 +16,11 @@
   <br>
   <div>
     <strong>Backend(Spring)</strong>
-    &nbsp;송은혜 : 시큐리티&jwt / 사용자 정보 조회API / 회원 탈퇴API<br>
-    &nbsp;박만수 : TO-DO 삭제,수정 API / 체크박스 (TO-DO완료체크) API<br>
-    &nbsp;김호빈 : TO-DO 전체 조회, 등록 API<br>
     <a href="https://github.com/EunheaSong/99List">github로 이동</a>
+    &nbsp;송은혜 : 시큐리티&jwt / 사용자 정보 조회API / 회원 탈퇴API<br>
+    &nbsp;박만수 : TODO 삭제,수정 API / 체크박스 (TODO완료체크) API<br>
+    &nbsp;김호빈 : TODO 전체 조회, 등록 API<br>
+
   </div>
 </div>
 <br>
