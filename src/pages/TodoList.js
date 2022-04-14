@@ -20,6 +20,17 @@ const TodoList = (props) => {
     setModalOpen(false);
   };
 
+  const [EmodalOpen, setEModalOpen] = useState(false);
+
+  console.log(EmodalOpen)
+
+  const openEModal = () => {
+    setEModalOpen(true);
+  };
+  const closeEModal = () => {
+    setEModalOpen(false);
+  };
+
   return (
     <React.Fragment>
 
@@ -29,17 +40,14 @@ const TodoList = (props) => {
 
       <Grid margin = "180px 0px 0px 0px"></Grid>
       
-      <Card openModal = {openModal}></Card>
+      <Card openEModal={openEModal} open={EmodalOpen} close={closeEModal} header="Todo List"></Card>
 
       {/* header 부분에 텍스트를 입력한다. */}
       <Modal open={modalOpen} close={closeModal} header="Todo List">
         {/* // Modal.js  */}
         <main>
           <Grid>
-
             
-
-
           </Grid>
         </main>
         {/* 에 내용이 입력된다. 리액트 함수형 모달 */}

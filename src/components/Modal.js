@@ -19,6 +19,7 @@ const Modal = (props) => {
   }
 
   // const history = useHistory();
+
   
   const { open, close, header } = props;
   return (

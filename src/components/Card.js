@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { Grid , Text} from "../elements/Index"
+import { Grid , Text, Input} from "../elements/Index"
 import {useDispatch, useSelector} from "react-redux"
 import { actionCreators as postActions } from "../redux/modules/todo";
 import { useEffect } from "react";
 import { deleteTodoFB } from "../redux/modules/todo";
 import { useState } from "react";
+import { editTodoFB } from "../redux/modules/todo";
+import { actionCreators as todoActions } from "../redux/modules/todo";
+import "./Modal.css"
 
 
 
@@ -30,6 +33,31 @@ const Card = (props) => {
 
   const [endTodo, setEndTodo] = useState(false);
 
+  const [title, setTitle] = React.useState("");
+  const [content, setContent] = React.useState("");
+  const [stars, setStars] = React.useState(0);
+
+  const todoAdd = () => {
+    
+    // window.location.reload()
+  }
+  
+  const [EmodalOpen, setEModalOpen] = useState(false);
+
+  // console.log(EmodalOpen)
+
+  const openEModal = () => {
+    setEModalOpen(true);
+  };
+  const closeEModal = () => {
+    setEModalOpen(false);
+  };
+
+  const { header } = props;
+
+  const open = EmodalOpen
+
+  const close = closeEModal
     
   return (
     
@@ -61,13 +89,13 @@ const Card = (props) => {
                 margin : "5px auto", 
                 textAlign : "center", 
                 lineHeight : "30px"}}>{
-                  data.stars == 1 
+                  data.stars === 1 
                   ? "🍪" 
-                  : data.stars == 2 
+                  : data.stars === 2 
                   ? "🍪🍪" 
-                  : data.stars == 3
+                  : data.stars === 3
                   ? "🍪🍪🍪" 
-                  : data.stars == 4
+                  : data.stars === 4
                   ? "🍪🍪🍪🍪" 
                   : "🍪🍪🍪🍪🍪"
                 }</div>
@@ -85,7 +113,7 @@ const Card = (props) => {
                 height="2em" 
                 width="2em"
                 onClick={() => {
-                  dispatch(deleteTodoFB(data.planId))
+                  dispatch(todoActions.deleteTodoFB(data.planId))
                   // window.location.reload()
                 }}
                 > 
@@ -99,11 +127,14 @@ const Card = (props) => {
                 viewBox="0 0 24 24" 
                 height="1.8em" 
                 width="1.8em" 
-                onClick={() => {
-                  dispatch(deleteTodoFB(data.planId))
-                  props.openModal()}
+                onClick={
+                //   // () => {
+                  openEModal
+                //   // dispatch(editTodoFB(data.planId))
+                //   // }
+                
                   }
-                // onClick = { () => {} }
+                // onClick = { props.setEndTodo }
                 >
                   <path 
                   d="M21.561 5.318l-2.879-2.879c-.293-.293-.677-.439-1.061-.439-.385 0-.768.146-1.061.439l-3.56 3.561h-9c-.552 0-1 .447-1 1v13c0 .553.448 1 1 1h13c.552 0 1-.447 1-1v-9l3.561-3.561c.293-.293.439-.677.439-1.061s-.146-.767-.439-1.06zm-10.061 9.354l-2.172-2.172 6.293-6.293 2.172 2.172-6.293 6.293zm-2.561-1.339l1.756 1.728-1.695-.061-.061-1.667zm7.061 5.667h-11v-11h6l-3.18 3.18c-.293.293-.478.812-.629 1.289-.16.5-.191 1.056-.191 1.47v3.061h3.061c.414 0 1.108-.1 1.571-.29.464-.19.896-.347 1.188-.64l3.18-3.07v6zm2.5-11.328l-2.172-2.172 1.293-1.293 2.171 2.172-1.292 1.293z">
@@ -130,6 +161,81 @@ const Card = (props) => {
               </Text>
 
             </TodoCard>
+
+                <Grid>
+
+            <div className={open ? 'openModal modal' : 'modal'}>
+              {open 
+              ? (
+                  <section>
+                    <header>
+                      {header}
+                      <button className="close" onClick={close}>
+                        &times;
+                      </button>
+                    </header>
+                    <main>
+
+                        <Input 
+                          margin = "10px auto" 
+                          bg = "#f7f6eb" 
+                          border = "none" 
+                          placeholder = "제목을 입력해주세요!"
+                          
+                          _onChange = {(e) => {setTitle(e.target.value)}}
+                        ></Input>
+
+                        <Input 
+                          margin = "10px auto" 
+                          bg = "#f7f6eb" 
+                          border = "none" 
+                          height = "200px" 
+                          placeholder = "Todo 내용을 알려주세요!"
+                          _onChange = {(e) => {setContent(e.target.value)}}
+                        ></Input>
+
+                        <div style = { {width : '200px', height: '40px', margin : '15px auto'} }>
+                        {Array.from({ length: 5 }, (item, idx) => {
+                        return (
+                        <div
+                            key={idx}
+                            onClick={() => {
+                            setStars(idx + 1);
+                            }}
+                            style={{
+                            width: "30px",
+                            height: "30px",
+                            borderRadius: "30px",
+                            margin: "5px",
+                            float : 'left',
+                            textAlign : 'center',
+                            clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
+                            backgroundColor: stars < idx + 1 ? "darkgray" : "#f9844a",
+                            }}
+                        >
+                        
+                        </div>
+                        );
+                    })}
+                    </div>
+
+                    </main>
+                    <footer>
+                      <button className="close" 
+                        onClick={() => {dispatch(todoActions.editTodoFB(data.planId ,title, content, stars));
+                          window.location.reload()
+                        }
+                      
+                      }
+                      >
+                        수정하기
+                      </button>
+                    </footer>
+                  </section>
+                ) 
+              : null }
+            </div>
+                </Grid>
 
             </Grid>
           );

@@ -110,11 +110,33 @@ export const deleteTodoFB = (planId) => {
 
 // todo 수정 액션
 
-const editTodoFB = (planId, title, content, stars) => {
+export const editTodoFB = (planId, title, content, stars) => {
   console.log(planId, title, content, stars )
   return function (dispatch, getState, {history}) {
+    if(!planId) {
+      window.alert("포스트 아이디가 없습니다!")
+    }
     const myToken = getCookie("Authorization");
-
+    axios({
+      method: "put",
+      url: `http://3.38.179.73/api/plan/${planId}`,
+      data: {
+        planId: planId,
+        title : title,
+        content : content,
+        stars : stars
+      },
+      headers: {
+        Authorization: `Bearer ${myToken}`
+      },
+    })
+    .then((response) => {
+      console.log(response);
+      dispatch(editTodo(planId, title, content, stars));
+    })
+    .catch((err) => {
+      console.log("서버에러: ", err)
+    })
 }}
 
 
@@ -144,7 +166,8 @@ export default handleActions(
 
     [EDIT_TODO]: (state, action) =>
       produce(state, (draft) => {
-        
+        console.log(action.payload.planId)
+        draft.todos.content = draft.todos.content.filter((p) =>  p.planId === action.payload.planId);
       }),
   },
   initialState
